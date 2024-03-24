@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# CLion Build Folders
+cmake-build-debug
+cmake-build-release
