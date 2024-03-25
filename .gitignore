@@ -32,5 +32,7 @@
 *.app
 
 # CLion Build Folders
+.idea
 cmake-build-debug
 cmake-build-release
+/.idea/
