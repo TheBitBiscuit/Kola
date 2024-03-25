@@ -31,8 +31,13 @@
 *.out
 *.app
 
-# CLion Build Folders
-.idea
-cmake-build-debug
-cmake-build-release
+# JetBrains
 /.idea/
+/cmake-build-debug/
+/cmake-build-release/
+
+# VS Code
+/.vscode/
+
+# Build Stuff
+/build/

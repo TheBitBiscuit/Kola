@@ -1,4 +1,47 @@
 # Kola
 Retrofitting an old soda machine into a smart soda machine!
 
-Removing all the basic electrical logic used to operate the machine and offloading all functions to a RP2024 microcontroller.
+## Intro
+This project is using a Dixie-Narco 240/138 6 Slot Soda machine.  It is basic and lacks a central controller board and
+uses general electrical/mechanical logic to operate coin operation and vending.
+
+## Prerequisites
+* ### Microcontroller
+  * Raspberry Pi Pico-W (RP2040 + Infineon CYW4343)
+* ### ARM Toolchain
+  *  MacOS (Homebrew)
+      ```zsh
+     brew update
+     brew tap armmbed/formulae
+     brew install armmbed/formulae/arm-none-eabi-gcc cmake
+      ```
+* ### Pico-SDK
+  * Clone Locally and Add to $PATH
+      ```zsh
+     cd <path-of-your-choosing> # Navigate to where you want to store the SDK repo
+     git clone -b master https://github.com/raspberrypi/pico-sdk.git
+     cd pico-sdk
+     git submodule update --init
+     echo 'export PICO_SDK_PATH="<path-you-chose-above>/pico-sdk"' >> ~/.zshrc # Used ZSH here, but pick your current shell
+     source ~/.zshrc # reload shell with added path
+      ```
+  * UNTESTED! -- Given how the CMakeLists is constructed, it will search for the PICO_SDK_PATH globally. If not found, 
+  it'll source it locally into the project.
+
+## Building and Compiling
+  * Terminal
+    ```zsh
+    cd <root-of-project> # Navigate to root of the project
+    mkdir build
+    cd build
+    cmake ..
+    make
+      ```
+
+## Flashing and Installation
+1. While holding down the `BOOTSEL` button, plug the Pico-W into a USB port.
+2. The Pico-W will appear as a mass storage device in your file manager.
+3. Drag-and-drop the `kola.uf2` file from your `build` folder to the Pico, as you would if you were moving a file to a flash drive.
+4. The Pico-W will automatically reboot, and start running the Kola firmware.
+5. Unplug the Pico-W from the USB cable and transfer to the `KOLA-BOARD` inside the soda machine.
+6. With the soda machine connected to power, flip `KOLA-BOARD` power switch to `ON` position.
