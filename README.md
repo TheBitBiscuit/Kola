@@ -16,17 +16,7 @@ uses general electrical/mechanical logic to operate coin operation and vending.
      brew install armmbed/formulae/arm-none-eabi-gcc cmake
       ```
 * ### Pico-SDK
-  * Clone Locally and Add to $PATH
-      ```zsh
-     cd <path-of-your-choosing> # Navigate to where you want to store the SDK repo
-     git clone -b master https://github.com/raspberrypi/pico-sdk.git
-     cd pico-sdk
-     git submodule update --init
-     echo 'export PICO_SDK_PATH="<path-you-chose-above>/pico-sdk"' >> ~/.zshrc # Used ZSH here, but pick your current shell
-     source ~/.zshrc # reload shell with added path
-      ```
-  * UNTESTED! -- Given how the CMakeLists is constructed, it will search for the PICO_SDK_PATH globally. If not found, 
-  it'll source it locally into the project.
+  * Will automatically pull the pico-sdk when cmake files are generated.  No need to add specific `$PATH` definitions.
 
 ## Building and Compiling
   * Terminal
