@@ -1,6 +1,6 @@
 #include "pico/stdlib.h"
 #include "pico/cyw43_arch.h"
-#include "flash_utils.h"
+#include "../../libs/persistent-storage/flash_utils.h"
 
 
 // Static Variables
@@ -29,8 +29,11 @@ int main()
 
     while(true) {
         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, GPIO_ON);
+        printf("LED ON!\n");
+        printf(addr, "address = %x", getAddressPersistent());
         sleep_ms(1000);
         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, GPIO_OFF);
+        printf("LED OFF!\n");
         sleep_ms(1000);
     }
 }
